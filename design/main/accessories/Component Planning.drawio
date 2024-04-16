@@ -1,0 +1,218 @@
+<mxfile host="Electron" modified="2024-04-15T12:20:08.698Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="sQQOtoopWE2FB_6BRfgk" version="24.2.5" type="device" pages="2">
+  <diagram name="original" id="imuEBFVDor4QbdWIn-XX">
+    <mxGraphModel dx="1434" dy="854" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-2" value="Charge Station Model" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="130" width="490" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-8" value="Wireless Charger (9-12&lt;span style=&quot;background-color: initial;&quot;&gt;v)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="QfkMdHndaiRPbFhAJhWu-2" vertex="1">
+          <mxGeometry x="150" y="350" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-9" value="ESP32 (5v)" style="whiteSpace=wrap;html=1;" parent="QfkMdHndaiRPbFhAJhWu-2" vertex="1">
+          <mxGeometry x="180" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="QfkMdHndaiRPbFhAJhWu-2" source="QfkMdHndaiRPbFhAJhWu-11" target="QfkMdHndaiRPbFhAJhWu-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-18" value="USB A&lt;div&gt;(power)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="QfkMdHndaiRPbFhAJhWu-17" vertex="1" connectable="0">
+          <mxGeometry x="-0.0444" y="-3" relative="1" as="geometry">
+            <mxPoint x="-3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="QfkMdHndaiRPbFhAJhWu-2" source="QfkMdHndaiRPbFhAJhWu-9" target="QfkMdHndaiRPbFhAJhWu-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-23" value="USB A - UART?&lt;div&gt;(adapter and power)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="QfkMdHndaiRPbFhAJhWu-22" vertex="1" connectable="0">
+          <mxGeometry x="0.0513" y="-1" relative="1" as="geometry">
+            <mxPoint x="6" y="33" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="QfkMdHndaiRPbFhAJhWu-2" source="QfkMdHndaiRPbFhAJhWu-11" target="QfkMdHndaiRPbFhAJhWu-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-35" value="Split Custom Cable&lt;div&gt;(power)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="QfkMdHndaiRPbFhAJhWu-34" vertex="1" connectable="0">
+          <mxGeometry x="0.2128" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-11" value="Central Hub&lt;div&gt;ESP32 S3&lt;/div&gt;&lt;div&gt;(has UART port)&lt;/div&gt;" style="whiteSpace=wrap;html=1;" parent="QfkMdHndaiRPbFhAJhWu-2" vertex="1">
+          <mxGeometry x="180" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-7" value="Screen (5v)" style="rounded=0;whiteSpace=wrap;html=1;" parent="QfkMdHndaiRPbFhAJhWu-2" vertex="1">
+          <mxGeometry x="430" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-13" value="Type C with Power" style="shape=singleArrow;whiteSpace=wrap;html=1;arrowWidth=0.4;arrowSize=0.4;" parent="1" vertex="1">
+          <mxGeometry x="590" y="190" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-14" value="Type C Data" style="shape=singleArrow;whiteSpace=wrap;html=1;arrowWidth=0.4;arrowSize=0.4;" parent="1" vertex="1">
+          <mxGeometry x="590" y="410" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-10" value="USB Hub" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="130" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="1" source="QfkMdHndaiRPbFhAJhWu-15" target="QfkMdHndaiRPbFhAJhWu-11" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="70" />
+              <mxPoint x="320" y="260" />
+              <mxPoint x="410" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-36" value="USB C&lt;div&gt;(power)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="QfkMdHndaiRPbFhAJhWu-16" vertex="1" connectable="0">
+          <mxGeometry x="-0.1507" y="3" relative="1" as="geometry">
+            <mxPoint x="-73" y="-34" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-15" value="Wall Power" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-21" value="USB C&lt;div&gt;(data)&lt;/div&gt;" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;startArrow=classic;endSize=8;startSize=8;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="QfkMdHndaiRPbFhAJhWu-10" target="QfkMdHndaiRPbFhAJhWu-11" edge="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="240" y="350" as="sourcePoint" />
+            <mxPoint x="340" y="350" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" parent="1" source="QfkMdHndaiRPbFhAJhWu-11" target="QfkMdHndaiRPbFhAJhWu-14" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="470" y="380" />
+              <mxPoint x="530" y="380" />
+              <mxPoint x="530" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-26" value="USB A/C&lt;div&gt;(data)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="QfkMdHndaiRPbFhAJhWu-24" vertex="1" connectable="0">
+          <mxGeometry x="0.1079" y="4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" parent="1" source="QfkMdHndaiRPbFhAJhWu-11" target="QfkMdHndaiRPbFhAJhWu-13" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="470" y="250" />
+              <mxPoint x="520" y="250" />
+              <mxPoint x="520" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QfkMdHndaiRPbFhAJhWu-33" value="USB C&lt;div&gt;(power and data)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="QfkMdHndaiRPbFhAJhWu-27" vertex="1" connectable="0">
+          <mxGeometry x="0.0088" y="2" relative="1" as="geometry">
+            <mxPoint x="2" y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="alternative" id="o7gdwj7y3OTzQ0eh27kD">
+    <mxGraphModel dx="1434" dy="854" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-0" />
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-1" parent="pW_5QN4K8f3bbnnkQmGC-0" />
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-2" value="Charge Station Model" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="pW_5QN4K8f3bbnnkQmGC-1">
+          <mxGeometry x="200" y="130" width="490" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-3" value="Wireless Charger (9-12&lt;span style=&quot;background-color: initial;&quot;&gt;v)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="pW_5QN4K8f3bbnnkQmGC-2">
+          <mxGeometry x="150" y="350" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-4" value="ESP32 (5v)" style="whiteSpace=wrap;html=1;" vertex="1" parent="pW_5QN4K8f3bbnnkQmGC-2">
+          <mxGeometry x="180" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="pW_5QN4K8f3bbnnkQmGC-2" source="pW_5QN4K8f3bbnnkQmGC-11" target="pW_5QN4K8f3bbnnkQmGC-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-6" value="USB A&lt;div&gt;(power)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="pW_5QN4K8f3bbnnkQmGC-5">
+          <mxGeometry x="-0.0444" y="-3" relative="1" as="geometry">
+            <mxPoint x="-3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="pW_5QN4K8f3bbnnkQmGC-2" source="pW_5QN4K8f3bbnnkQmGC-4" target="pW_5QN4K8f3bbnnkQmGC-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-8" value="USB A - UART?&lt;div&gt;(adapter and power)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="pW_5QN4K8f3bbnnkQmGC-7">
+          <mxGeometry x="0.0513" y="-1" relative="1" as="geometry">
+            <mxPoint x="6" y="33" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="pW_5QN4K8f3bbnnkQmGC-2" source="pW_5QN4K8f3bbnnkQmGC-11" target="pW_5QN4K8f3bbnnkQmGC-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-10" value="Split Custom Cable&lt;div&gt;(power)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="pW_5QN4K8f3bbnnkQmGC-9">
+          <mxGeometry x="0.2128" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-11" value="Central Hub&lt;div&gt;ESP32 S3&lt;/div&gt;&lt;div&gt;(has UART port)&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="pW_5QN4K8f3bbnnkQmGC-2">
+          <mxGeometry x="180" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-12" value="Screen (5v)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="pW_5QN4K8f3bbnnkQmGC-2">
+          <mxGeometry x="430" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-13" value="Type C with Power" style="shape=singleArrow;whiteSpace=wrap;html=1;arrowWidth=0.4;arrowSize=0.4;" vertex="1" parent="pW_5QN4K8f3bbnnkQmGC-1">
+          <mxGeometry x="590" y="190" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-14" value="Type C Data" style="shape=singleArrow;whiteSpace=wrap;html=1;arrowWidth=0.4;arrowSize=0.4;" vertex="1" parent="pW_5QN4K8f3bbnnkQmGC-1">
+          <mxGeometry x="590" y="410" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-15" value="USB Hub" style="whiteSpace=wrap;html=1;" vertex="1" parent="pW_5QN4K8f3bbnnkQmGC-1">
+          <mxGeometry x="130" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="pW_5QN4K8f3bbnnkQmGC-1" source="pW_5QN4K8f3bbnnkQmGC-18" target="pW_5QN4K8f3bbnnkQmGC-11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="70" />
+              <mxPoint x="320" y="260" />
+              <mxPoint x="410" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-17" value="USB C&lt;div&gt;(power)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="pW_5QN4K8f3bbnnkQmGC-16">
+          <mxGeometry x="-0.1507" y="3" relative="1" as="geometry">
+            <mxPoint x="-73" y="-34" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-18" value="Wall Power" style="whiteSpace=wrap;html=1;" vertex="1" parent="pW_5QN4K8f3bbnnkQmGC-1">
+          <mxGeometry x="30" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-19" value="USB C&lt;div&gt;(data)&lt;/div&gt;" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;startArrow=classic;endSize=8;startSize=8;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="pW_5QN4K8f3bbnnkQmGC-1" source="pW_5QN4K8f3bbnnkQmGC-15" target="pW_5QN4K8f3bbnnkQmGC-11">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="240" y="350" as="sourcePoint" />
+            <mxPoint x="340" y="350" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" edge="1" parent="pW_5QN4K8f3bbnnkQmGC-1" source="pW_5QN4K8f3bbnnkQmGC-11" target="pW_5QN4K8f3bbnnkQmGC-14">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="470" y="380" />
+              <mxPoint x="530" y="380" />
+              <mxPoint x="530" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-21" value="USB A/C&lt;div&gt;(data)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="pW_5QN4K8f3bbnnkQmGC-20">
+          <mxGeometry x="0.1079" y="4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" edge="1" parent="pW_5QN4K8f3bbnnkQmGC-1" source="pW_5QN4K8f3bbnnkQmGC-11" target="pW_5QN4K8f3bbnnkQmGC-13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="470" y="250" />
+              <mxPoint x="520" y="250" />
+              <mxPoint x="520" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pW_5QN4K8f3bbnnkQmGC-23" value="USB C&lt;div&gt;(power and data)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="pW_5QN4K8f3bbnnkQmGC-22">
+          <mxGeometry x="0.0088" y="2" relative="1" as="geometry">
+            <mxPoint x="2" y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

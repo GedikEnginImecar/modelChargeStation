@@ -19,5 +19,3 @@ void setup()
 void loop()
 {
 }
-
-// works with esp32 wroom32d dev board to connect to phone and play audio, however needs to work with ble, or change the MCU for the project to employ this solution.

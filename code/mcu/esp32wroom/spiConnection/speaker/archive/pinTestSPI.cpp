@@ -28,3 +28,11 @@ void loop()
 
 // look at how to send data, bit clock, lrc etc from esp32 i2s to either speakers or the dac
 // https://www.youtube.com/watch?v=qNLvoSQCx60
+
+// https://www.youtube.com/watch?v=XpeCkBxokWA
+
+// look at:
+// andreas spiess https://www.youtube.com/channel/UCu7_D0o48KbfhpEohoP7YSQ
+// hackster.io https://www.hackster.io/search?i=projects&q=ESP32
+// making reddit question
+// SmingHub https://github.com/SmingHub/Sming

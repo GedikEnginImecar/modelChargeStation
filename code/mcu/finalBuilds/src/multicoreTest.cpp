@@ -38,6 +38,10 @@ void task2(void *pvParameters)
         Serial.println(count2++);              // increments counter
         vTaskDelay(1000 / portTICK_PERIOD_MS); // vTaskDelay counts in ticks, but 1000/portTICK_PERIOD_MS converts it into ms by using constant built in
     }
+    if (count2 == 10)
+    {
+        vTaskDelete(NULL); // to delete a task internally
+    }
 };
 
 void setup()
@@ -53,11 +57,31 @@ void setup()
     xTaskCreate(task2, "Task 2", 1000, NULL, 1, NULL);
 }
 
+void imperativeTask()
+{
+    vTaskSuspendAll(); // to suspend all tasks to lend priority to code that needs to be executed
+
+    // code that needs to be executed
+    Serial.println("Imperative Task");
+
+    xTaskResumeAll(); // to resume all tasks once code above is executed. pay attention to xTask and how it is not vTask
+}
+
 void loop()
 {
     if (count1 > 3 && task1Handle != NULL) // to check if task 1 is greater than 3 and not null
     // if it is null it will suspend the active task
     {
         vTaskSuspend(task1Handle);
+    }
+
+    if (count2 == 5 && task1Handle != NULL) // task1 to resume via its handler when task2 is equal to 5 and task1 handler is not null
+    {
+        vTaskResume(task1Handle); // to resume the task that was previously suspended
+    }
+
+    if (count1 == 10)
+    {
+        vTaskDelete(task1Handle); // to delete a task
     }
 }

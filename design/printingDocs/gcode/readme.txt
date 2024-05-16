@@ -1,0 +1,1 @@
+parts and configs are designed for creality k1

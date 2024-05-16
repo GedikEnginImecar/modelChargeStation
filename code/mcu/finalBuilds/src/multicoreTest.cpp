@@ -8,6 +8,7 @@
 
 int count1 = 0;
 int count2 = 0;
+TaskHandle_t task1Handle = NULL; // used to create a task handler to manipulate it across the program
 
 // pointer to void parameters
 // used when creating a FreeRTOS task
@@ -21,6 +22,11 @@ void task1(void *pvParameters)
         Serial.print("Task 1 counter:");
         Serial.println(count1++);              // increments counter
         vTaskDelay(1000 / portTICK_PERIOD_MS); // vTaskDelay counts in ticks, but 1000/portTICK_PERIOD_MS converts it into ms by using constant built in
+    }
+    if (count1 > 3)
+    {
+        // vTaskDelete(NULL); // to terminate task internally
+        vTaskSuspend(NULL) // to pause/suspend the task
     }
 };
 
@@ -43,8 +49,15 @@ void setup()
     // the task parameter to receive when the task is created, if nothing it can be null
     // task priority, the higher the number the higher priority the task will be, FreeRTOS will give that task more time
     // used to get a task handle, allowing tasks to interact with other tasks);
-    xTaskCreate(task1, "Task 1", 1000, NULL, 1, NULL);
+    xTaskCreate(task1, "Task 1", 1000, NULL, 1, &task1Handle); // using task handler to control task externally
     xTaskCreate(task2, "Task 2", 1000, NULL, 1, NULL);
 }
 
-void loop() {}
+void loop()
+{
+    if (count1 > 3 && task1Handle != NULL) // to check if task 1 is greater than 3 and not null
+    // if it is null it will suspend the active task
+    {
+        vTaskSuspend(task1Handle);
+    }
+}

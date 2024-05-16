@@ -1,17 +1,21 @@
+
 // libs to build with
 
 #include "Arduino.h"
 #include "AudioTools.h"
 #include "BluetoothA2DPSink.h"
+#include "BluetoothA2DPSource.h"
 
 // led pins
-#define redPin 25
-#define greenPin 26
+#define redPin 26
+#define greenPin 25
 #define bluePin 27
 
 // initializing instances of I2S stream and A2DP sink passing i2s as a param
 I2SStream i2s;
 BluetoothA2DPSink a2dp_sink(i2s);
+BluetoothA2DPSource a2dp_source;
+// ^^ adding bluetooth source lib and instantiating it
 
 // led related
 // creating a class for leds to be public and have its own dedicated function
@@ -27,7 +31,7 @@ public:
   LedClass(int red, int green, int blue) : redValue(red), greenValue(green), blueValue(blue) {}
 
   void setLedValues(int red, int green, int blue)
-  { // could be an issue caused by lack of delay or time?
+  {
     analogWrite(redPin, red);
     analogWrite(greenPin, green);
     analogWrite(bluePin, blue);
@@ -49,6 +53,39 @@ void volumeCallback(int volume)
   pillarLeds.setLedValues(0, 0, (volume * 2));
 };
 
+void checkBluetoothConnection()
+{
+  if (a2dp_sink.is_connected())
+  {
+    Serial.println("Bluetooth is connected.");
+    // Set LED to green to indicate connection
+    pillarLeds.setLedValues(0, 255, 0);
+  }
+  else
+  {
+    Serial.println("Bluetooth is not connected. Attempting to reconnect...");
+    // Set LED to red to indicate disconnection
+    pillarLeds.setLedValues(255, 0, 0);
+
+    // Attempt to reconnect
+    a2dp_sink.start("MyMusic");
+
+    // Check connection status after attempting to reconnect
+    if (a2dp_sink.is_connected())
+    {
+      Serial.println("Reconnected to Bluetooth successfully.");
+      // Set LED to green to indicate successful reconnection
+      pillarLeds.setLedValues(0, 255, 0);
+    }
+    else
+    {
+      Serial.println("Failed to reconnect to Bluetooth.");
+      // Set LED to red to indicate failure
+      pillarLeds.setLedValues(255, 0, 0);
+    };
+  };
+}
+
 void audioStreamingSetup()
 {
   // regular config for the audio transmission - more suitable for external DAC/ADC that does not require software tuning
@@ -56,10 +93,14 @@ void audioStreamingSetup()
   cfg.pin_bck = 16;  // Bit clock
   cfg.pin_ws = 5;    // Stereo pin
   cfg.pin_data = 17; // Data transfer pin (esp to dac)
-  i2s.begin(cfg);    // filling in the class variable values and starting the stream
+
+  i2s.begin(cfg); // filling in the class variable values and starting the stream
 
   // register the volume callback function
   a2dp_sink.set_on_volumechange(volumeCallback);
+
+  // enable auto reconnect
+  a2dp_sink.set_auto_reconnect(true);
 
   // creating bluetooth instantiation
   a2dp_sink.start("MyMusic");
@@ -82,12 +123,11 @@ void setup()
   // calls other setup functions
   audioStreamingSetup();
   ledSetup();
+  checkBluetoothConnection();
 }
 
 void loop()
 {
-  // blank for the time being
+  checkBluetoothConnection();
+  delay(2500);
 }
-
-// NOTE
-// you need to have media playing to be able to see the leds change

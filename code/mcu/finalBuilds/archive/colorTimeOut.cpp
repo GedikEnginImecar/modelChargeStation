@@ -1,5 +1,6 @@
 // colorTimeOut.cpp
 // aiming to control the leds such that it they fade over time as opposed to suddenly cutting out / not getting stuck at their last state
+// use millis to avoid halting the program
 
 // libs to build with
 

@@ -13,6 +13,12 @@
 I2SStream i2s;
 BluetoothA2DPSink a2dp_sink(i2s);
 
+void volumeMonitoring(int volume)
+{
+  Serial.print("Volume is now:  ");
+  Serial.print(volume);
+};
+
 void audioStreamingSetup()
 {
   // regular config for the audio transmission - more suitable for external DAC/ADC that does not require software tuning
@@ -21,6 +27,9 @@ void audioStreamingSetup()
   cfg.pin_ws = 5;    // Stereo pin
   cfg.pin_data = 17; // Data transfer pin (esp to dac)
   i2s.begin(cfg);    // filling in the class variable values and starting the stream
+
+  // register the volume callback function
+  a2dp_sink.set_on_volumechange(volumeMonitoring);
 
   a2dp_sink.start("MyMusic"); // creating bluetooth instantiation
 };

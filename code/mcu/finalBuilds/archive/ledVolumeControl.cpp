@@ -13,40 +13,26 @@
 I2SStream i2s;
 BluetoothA2DPSink a2dp_sink(i2s);
 
-// led related
-// creating a class for leds to be public and have its own dedicated function
-class LedClass
+void setLed(int volume)
 {
-    // defining public variables to be used inside the pillarLeds class
-public:
-    int redValue;
-    int greenValue;
-    int blueValue;
+    delay(500);
+    Serial.println("shift");
+    analogWrite(redPin, 0);
+    analogWrite(greenPin, 0);
+    analogWrite(bluePin, 0);
 
-    // constructor for the class
-    LedClass(int red, int green, int blue) : redValue(red), greenValue(green), blueValue(blue) {}
-
-    void setLedValues(int red, int green, int blue)
-    {
-        analogWrite(redPin, red);
-        analogWrite(greenPin, green);
-        analogWrite(bluePin, blue);
-    }
+    delay(500);
+    Serial.println("updated volume");
+    analogWrite(redPin, 0);
+    analogWrite(greenPin, 0);
+    analogWrite(bluePin, volume);
 };
 
-// global
-// global instance of LedClass pillarLeds
-LedClass pillarLeds(0, 0, 0);
-
-void volumeCallback(int volume)
+void volumeMonitoring(int volume)
 {
-    // displaying volume
-    Serial.println("Volume is now:  ");
+    Serial.print("Volume is now:  ");
     Serial.print(volume);
-
-    // as the volume goes 0-127, multiply by 2 to roughly equalize it to 255 ratios
-    // calling the setLedValues function in the class that pillarLeds is a child of
-    pillarLeds.setLedValues(0, 0, (volume * 2));
+    setLed(volume);
 };
 
 void audioStreamingSetup()
@@ -59,10 +45,9 @@ void audioStreamingSetup()
     i2s.begin(cfg);    // filling in the class variable values and starting the stream
 
     // register the volume callback function
-    a2dp_sink.set_on_volumechange(volumeCallback);
+    a2dp_sink.set_on_volumechange(volumeMonitoring);
 
-    // creating bluetooth instantiation
-    a2dp_sink.start("MyMusic");
+    a2dp_sink.start("MyMusic"); // creating bluetooth instantiation
 };
 
 void ledSetup()
@@ -86,5 +71,5 @@ void setup()
 
 void loop()
 {
-    // blank for the time being
+    // nothing to be seen here folks
 }

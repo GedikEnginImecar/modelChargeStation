@@ -1,0 +1,157 @@
+\doxysection{color\+Time\+Out.\+cpp File Reference}
+\label{color_time_out_8cpp}\index{colorTimeOut.cpp@{colorTimeOut.cpp}}
+{\ttfamily \#include "{}Arduino.\+h"{}}\newline
+{\ttfamily \#include "{}Audio\+Tools.\+h"{}}\newline
+{\ttfamily \#include "{}Bluetooth\+A2\+DPSink.\+h"{}}\newline
+{\ttfamily \#include "{}Bluetooth\+A2\+DPSource.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \textbf{ Led\+Class}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \textbf{ red\+Pin}~26
+\item 
+\#define \textbf{ green\+Pin}~25
+\item 
+\#define \textbf{ blue\+Pin}~27
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Bluetooth\+A2\+DPSink \textbf{ a2dp\+\_\+sink} (\textbf{ i2s})
+\item 
+void \textbf{ volume\+Callback} (int volume)
+\item 
+void \textbf{ check\+Bluetooth\+Connection\+Task} (void $\ast$pv\+Parameters)
+\item 
+void \textbf{ audio\+Streaming\+Setup} ()
+\item 
+void \textbf{ led\+Setup} ()
+\item 
+void \textbf{ setup} ()
+\item 
+void \textbf{ loop} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+I2\+SStream \textbf{ i2s}
+\item 
+Bluetooth\+A2\+DPSource \textbf{ a2dp\+\_\+source}
+\item 
+Task\+Handle\+\_\+t \textbf{ led\+Control\+Handle} = NULL
+\item 
+Task\+Handle\+\_\+t \textbf{ bluetooth\+Connection\+Handle} = NULL
+\item 
+bool \textbf{ bluetooth\+Connection} = false
+\item 
+\textbf{ Led\+Class} \textbf{ pillar\+Leds} (0, 0, 0)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\label{color_time_out_8cpp_a6a4a16c5716e57bd3f0258d54125450b} 
+\index{colorTimeOut.cpp@{colorTimeOut.cpp}!bluePin@{bluePin}}
+\index{bluePin@{bluePin}!colorTimeOut.cpp@{colorTimeOut.cpp}}
+\doxysubsubsection{bluePin}
+{\footnotesize\ttfamily \#define blue\+Pin~27}
+
+\label{color_time_out_8cpp_a2fcdcefe7a1ffc7189224c3f6569e02b} 
+\index{colorTimeOut.cpp@{colorTimeOut.cpp}!greenPin@{greenPin}}
+\index{greenPin@{greenPin}!colorTimeOut.cpp@{colorTimeOut.cpp}}
+\doxysubsubsection{greenPin}
+{\footnotesize\ttfamily \#define green\+Pin~25}
+
+\label{color_time_out_8cpp_a53cecaf5b98a562ec544ac46930adb40} 
+\index{colorTimeOut.cpp@{colorTimeOut.cpp}!redPin@{redPin}}
+\index{redPin@{redPin}!colorTimeOut.cpp@{colorTimeOut.cpp}}
+\doxysubsubsection{redPin}
+{\footnotesize\ttfamily \#define red\+Pin~26}
+
+
+
+\doxysubsection{Function Documentation}
+\label{color_time_out_8cpp_aab914cffa4863b7142c371140591ab9e} 
+\index{colorTimeOut.cpp@{colorTimeOut.cpp}!a2dp\_sink@{a2dp\_sink}}
+\index{a2dp\_sink@{a2dp\_sink}!colorTimeOut.cpp@{colorTimeOut.cpp}}
+\doxysubsubsection{a2dp\_sink()}
+{\footnotesize\ttfamily Bluetooth\+A2\+DPSink a2dp\+\_\+sink (\begin{DoxyParamCaption}\item[{\textbf{ i2s}}]{ }\end{DoxyParamCaption})}
+
+\label{color_time_out_8cpp_ae726b8b8639a1c87428f6d9dca6399c7} 
+\index{colorTimeOut.cpp@{colorTimeOut.cpp}!audioStreamingSetup@{audioStreamingSetup}}
+\index{audioStreamingSetup@{audioStreamingSetup}!colorTimeOut.cpp@{colorTimeOut.cpp}}
+\doxysubsubsection{audioStreamingSetup()}
+{\footnotesize\ttfamily void audio\+Streaming\+Setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\label{color_time_out_8cpp_a59ec80e8b09214740998257e81d7f224} 
+\index{colorTimeOut.cpp@{colorTimeOut.cpp}!checkBluetoothConnectionTask@{checkBluetoothConnectionTask}}
+\index{checkBluetoothConnectionTask@{checkBluetoothConnectionTask}!colorTimeOut.cpp@{colorTimeOut.cpp}}
+\doxysubsubsection{checkBluetoothConnectionTask()}
+{\footnotesize\ttfamily void check\+Bluetooth\+Connection\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})}
+
+\label{color_time_out_8cpp_a6f0f6c8173050fd937b3af13a4ccf8d6} 
+\index{colorTimeOut.cpp@{colorTimeOut.cpp}!ledSetup@{ledSetup}}
+\index{ledSetup@{ledSetup}!colorTimeOut.cpp@{colorTimeOut.cpp}}
+\doxysubsubsection{ledSetup()}
+{\footnotesize\ttfamily void led\+Setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\label{color_time_out_8cpp_afe461d27b9c48d5921c00d521181f12f} 
+\index{colorTimeOut.cpp@{colorTimeOut.cpp}!loop@{loop}}
+\index{loop@{loop}!colorTimeOut.cpp@{colorTimeOut.cpp}}
+\doxysubsubsection{loop()}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\label{color_time_out_8cpp_a4fc01d736fe50cf5b977f755b675f11d} 
+\index{colorTimeOut.cpp@{colorTimeOut.cpp}!setup@{setup}}
+\index{setup@{setup}!colorTimeOut.cpp@{colorTimeOut.cpp}}
+\doxysubsubsection{setup()}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\label{color_time_out_8cpp_aaa834038e95b07009aaaba8f4df5f3da} 
+\index{colorTimeOut.cpp@{colorTimeOut.cpp}!volumeCallback@{volumeCallback}}
+\index{volumeCallback@{volumeCallback}!colorTimeOut.cpp@{colorTimeOut.cpp}}
+\doxysubsubsection{volumeCallback()}
+{\footnotesize\ttfamily void volume\+Callback (\begin{DoxyParamCaption}\item[{int}]{volume }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\label{color_time_out_8cpp_a5edd2cc6491e2602b606bfa070d6b783} 
+\index{colorTimeOut.cpp@{colorTimeOut.cpp}!a2dp\_source@{a2dp\_source}}
+\index{a2dp\_source@{a2dp\_source}!colorTimeOut.cpp@{colorTimeOut.cpp}}
+\doxysubsubsection{a2dp\_source}
+{\footnotesize\ttfamily Bluetooth\+A2\+DPSource a2dp\+\_\+source}
+
+\label{color_time_out_8cpp_a50934e8a0a800dcb13230c3051e841bb} 
+\index{colorTimeOut.cpp@{colorTimeOut.cpp}!bluetoothConnection@{bluetoothConnection}}
+\index{bluetoothConnection@{bluetoothConnection}!colorTimeOut.cpp@{colorTimeOut.cpp}}
+\doxysubsubsection{bluetoothConnection}
+{\footnotesize\ttfamily bool bluetooth\+Connection = false}
+
+\label{color_time_out_8cpp_a95dd144a94324247ca005ce7cb26b3f3} 
+\index{colorTimeOut.cpp@{colorTimeOut.cpp}!bluetoothConnectionHandle@{bluetoothConnectionHandle}}
+\index{bluetoothConnectionHandle@{bluetoothConnectionHandle}!colorTimeOut.cpp@{colorTimeOut.cpp}}
+\doxysubsubsection{bluetoothConnectionHandle}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t bluetooth\+Connection\+Handle = NULL}
+
+\label{color_time_out_8cpp_a4f2666dd37f8cfae1d93fb22225bd29c} 
+\index{colorTimeOut.cpp@{colorTimeOut.cpp}!i2s@{i2s}}
+\index{i2s@{i2s}!colorTimeOut.cpp@{colorTimeOut.cpp}}
+\doxysubsubsection{i2s}
+{\footnotesize\ttfamily I2\+SStream i2s}
+
+\label{color_time_out_8cpp_a790308c823a6da0f0f6ec6dad6549eb4} 
+\index{colorTimeOut.cpp@{colorTimeOut.cpp}!ledControlHandle@{ledControlHandle}}
+\index{ledControlHandle@{ledControlHandle}!colorTimeOut.cpp@{colorTimeOut.cpp}}
+\doxysubsubsection{ledControlHandle}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t led\+Control\+Handle = NULL}
+
+\label{color_time_out_8cpp_aead83bee94c63493fb1719cb1ec1834d} 
+\index{colorTimeOut.cpp@{colorTimeOut.cpp}!pillarLeds@{pillarLeds}}
+\index{pillarLeds@{pillarLeds}!colorTimeOut.cpp@{colorTimeOut.cpp}}
+\doxysubsubsection{pillarLeds}
+{\footnotesize\ttfamily \textbf{ Led\+Class} pillar\+Leds(0, 0, 0) (\begin{DoxyParamCaption}\item[{0}]{,  }\item[{0}]{,  }\item[{0}]{ }\end{DoxyParamCaption})}
+

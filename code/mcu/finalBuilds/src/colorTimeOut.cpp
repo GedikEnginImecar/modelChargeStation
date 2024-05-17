@@ -25,11 +25,13 @@ BluetoothA2DPSource a2dp_source;
 TaskHandle_t ledControlHandle = NULL;
 TaskHandle_t bluetoothConnectionHandle = NULL;
 
+bool bluetoothConnection = false;
+
 // led related
 // creating a class for leds to be public and have its own dedicated function
 class LedClass
 {
-    // initialising public variables to be used inside the class
+    // initialising public variables/members to be used inside the class
 public:
     int redValue;
     int greenValue;
@@ -38,7 +40,14 @@ public:
     // constructor for the class
     LedClass(int red, int green, int blue) : redValue(red), greenValue(green), blueValue(blue) {}
 
-    void setLedValues(int red, int green, int blue)
+    void setLedValuesVolume(int red, int green, int blue)
+    {
+        analogWrite(redPin, red);
+        analogWrite(greenPin, green);
+        analogWrite(bluePin, blue);
+    }
+
+    void setLedValuesConnection(int red, int green, int blue)
     {
         analogWrite(redPin, red);
         analogWrite(greenPin, green);
@@ -57,7 +66,8 @@ void volumeCallback(int volume)
 
     // as the volume goes 0-127, multiply by 2 to roughly equalize it to 255 ratios
     // calling the setLedValues function in the class that pillarLeds is a child of
-    pillarLeds.setLedValues(0, 0, (volume * 2));
+
+    pillarLeds.setLedValuesVolume(0, 0, (volume * 2));
 };
 
 // task to run actively in the background via multi core processing
@@ -68,14 +78,18 @@ void checkBluetoothConnectionTask(void *pvParameters)
         if (a2dp_sink.is_connected())
         {
             Serial.println("Bluetooth is connected.");
+
+            // setting flag state to true, used to monitor repeat led colorings
+            bluetoothConnection == true;
+
             // Set LED to green to indicate connection
-            pillarLeds.setLedValues(0, 255, 0);
+            pillarLeds.setLedValuesConnection(0, 255, 0);
         }
         else
         {
             Serial.println("Bluetooth is not connected. Attempting to reconnect...");
             // Set LED to red to indicate disconnection
-            pillarLeds.setLedValues(255, 0, 0);
+            pillarLeds.setLedValuesConnection(255, 0, 0);
 
             // Attempt to reconnect
             a2dp_sink.start("MyMusic");
@@ -85,13 +99,13 @@ void checkBluetoothConnectionTask(void *pvParameters)
             {
                 Serial.println("Reconnected to Bluetooth successfully.");
                 // Set LED to green to indicate successful reconnection
-                pillarLeds.setLedValues(0, 255, 0);
+                pillarLeds.setLedValuesConnection(0, 255, 0);
             }
             else
             {
                 Serial.println("Failed to reconnect to Bluetooth.");
                 // Set LED to red to indicate failure
-                pillarLeds.setLedValues(255, 0, 0);
+                pillarLeds.setLedValuesConnection(255, 0, 0);
             };
         };
         vTaskDelay(1000 / portTICK_PERIOD_MS);

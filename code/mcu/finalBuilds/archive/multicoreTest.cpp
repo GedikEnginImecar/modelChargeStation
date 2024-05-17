@@ -26,7 +26,7 @@ void task1(void *pvParameters)
     if (count1 > 3)
     {
         // vTaskDelete(NULL); // to terminate task internally
-        vTaskSuspend(NULL) // to pause/suspend the task
+        vTaskSuspend(NULL); // to pause/suspend the task
     }
 };
 

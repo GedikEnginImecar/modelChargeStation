@@ -2,6 +2,8 @@
 // aiming to control the leds such that it they fade over time as opposed to suddenly cutting out / not getting stuck at their last state
 // use millis to avoid halting the program
 
+// fully utilizing
+
 // libs to build with
 
 #include "Arduino.h"
@@ -20,11 +22,14 @@ BluetoothA2DPSink a2dp_sink(i2s);
 BluetoothA2DPSource a2dp_source;
 // ^^ adding bluetooth source lib and instantiating it
 
+TaskHandle_t ledControlHandle = NULL;
+TaskHandle_t bluetoothConnectionHandle = NULL;
+
 // led related
 // creating a class for leds to be public and have its own dedicated function
 class LedClass
 {
-    // defining public variables to be used inside the pillarLeds class
+    // initialising public variables to be used inside the class
 public:
     int redValue;
     int greenValue;
@@ -41,7 +46,6 @@ public:
     }
 };
 
-// global
 // global instance of LedClass pillarLeds
 LedClass pillarLeds(0, 0, 0);
 
@@ -56,39 +60,45 @@ void volumeCallback(int volume)
     pillarLeds.setLedValues(0, 0, (volume * 2));
 };
 
-void checkBluetoothConnection()
+// task to run actively in the background via multi core processing
+void checkBluetoothConnectionTask(void *pvParameters)
 {
-    if (a2dp_sink.is_connected())
+    for (;;)
     {
-        Serial.println("Bluetooth is connected.");
-        // Set LED to green to indicate connection
-        pillarLeds.setLedValues(0, 255, 0);
-    }
-    else
-    {
-        Serial.println("Bluetooth is not connected. Attempting to reconnect...");
-        // Set LED to red to indicate disconnection
-        pillarLeds.setLedValues(255, 0, 0);
-
-        // Attempt to reconnect
-        a2dp_sink.start("MyMusic");
-
-        // Check connection status after attempting to reconnect
         if (a2dp_sink.is_connected())
         {
-            Serial.println("Reconnected to Bluetooth successfully.");
-            // Set LED to green to indicate successful reconnection
+            Serial.println("Bluetooth is connected.");
+            // Set LED to green to indicate connection
             pillarLeds.setLedValues(0, 255, 0);
         }
         else
         {
-            Serial.println("Failed to reconnect to Bluetooth.");
-            // Set LED to red to indicate failure
+            Serial.println("Bluetooth is not connected. Attempting to reconnect...");
+            // Set LED to red to indicate disconnection
             pillarLeds.setLedValues(255, 0, 0);
-        };
-    };
-}
 
+            // Attempt to reconnect
+            a2dp_sink.start("MyMusic");
+
+            // Check connection status after attempting to reconnect
+            if (a2dp_sink.is_connected())
+            {
+                Serial.println("Reconnected to Bluetooth successfully.");
+                // Set LED to green to indicate successful reconnection
+                pillarLeds.setLedValues(0, 255, 0);
+            }
+            else
+            {
+                Serial.println("Failed to reconnect to Bluetooth.");
+                // Set LED to red to indicate failure
+                pillarLeds.setLedValues(255, 0, 0);
+            };
+        };
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
+    }
+};
+
+#pragma region setup
 void audioStreamingSetup()
 {
     // regular config for the audio transmission - more suitable for external DAC/ADC that does not require software tuning
@@ -126,11 +136,10 @@ void setup()
     // calls other setup functions
     audioStreamingSetup();
     ledSetup();
-    checkBluetoothConnection();
+    xTaskCreate(checkBluetoothConnectionTask, "checkBluetoothConnectionTask", 10000, NULL, 1, &bluetoothConnectionHandle);
 }
+#pragma endregion setup
 
 void loop()
 {
-    checkBluetoothConnection();
-    delay(2500);
 }

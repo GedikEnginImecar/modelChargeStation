@@ -1,6 +1,7 @@
 // colorTimeOut.cpp
 // aiming to control the leds such that it they fade over time as opposed to suddenly cutting out / not getting stuck at their last state
-// use millis to avoid halting the program
+// use millis to avoid halting the program or FreeRTOS
+// change wiring to represent the 4 different layers that the pillars each have
 
 // fully utilizing
 

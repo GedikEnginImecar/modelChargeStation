@@ -31,8 +31,6 @@
 
 #pragma endregion ledPins
 
-// classes and functions to build
-
 #pragma region instanceCreation
 
 I2SStream i2s;
@@ -65,15 +63,42 @@ public:
     // Constructor
     Leds() {}
 
+protected:
+    // Function to set RGB color for a specific layer by index
+    void setLayerColor(int layerIndex, int redValue, int greenValue, int blueValue)
+    {
+        if (layerIndex >= 1 && layerIndex <= 4)
+        {
+            analogWrite(layerRedPins[layerIndex - 1], redValue);
+            analogWrite(layerGreenPins[layerIndex - 1], greenValue);
+            analogWrite(layerBluePins[layerIndex - 1], blueValue);
+        }
+    }
+
+    // Function to set RGB color for all layers
+    void setAllColor(int redValue, int greenValue, int blueValue)
+    {
+        for (int layer = 1; layer <= 4; ++layer)
+        {
+            setLayerColor(layer, redValue, greenValue, blueValue);
+        }
+    }
+
+    // Function to turn off all LEDs
+    void turnOffAll()
+    {
+        setAllColor(0, 0, 0);
+    }
+
     // Function to set LED color for layer1 and layer4
-    void volumeLed()
+    void testFunction1()
     {
         setLayerColor(1, 0, 0, 255); // Set layer1 to blue
         setLayerColor(4, 255, 0, 0); // Set layer4 to red
     }
 
     // Function to perform connection test sequence
-    void connectTest()
+    void testFunction2()
     {
         // Iterate through each layer with a 500ms pause between each layer
         for (int layer = 1; layer <= 4; ++layer)
@@ -93,35 +118,9 @@ public:
         turnOffAll(); // Turn off all LEDs after sequence
         Serial.println("All LEDs turned off");
     }
-
-protected:
-    // Function to set RGB color for a specific layer by index
-    void setLayerColor(int layerIndex, int redValue, int greenValue, int blueValue)
-    {
-        if (layerIndex >= 1 && layerIndex <= 4)
-        {
-            analogWrite(layerRedPins[layerIndex - 1], redValue);
-            analogWrite(layerGreenPins[layerIndex - 1], greenValue);
-            analogWrite(layerBluePins[layerIndex - 1], blueValue);
-        }
-    }
-
-    // Function to turn off all LEDs
-    void turnOffAll()
-    {
-        setAllColor(0, 0, 0);
-    }
-
-    // Function to set RGB color for all layers
-    void setAllColor(int redValue, int greenValue, int blueValue)
-    {
-        for (int layer = 1; layer <= 4; ++layer)
-        {
-            setLayerColor(layer, redValue, greenValue, blueValue);
-        }
-    }
 };
 
+#pragma region ledSubclasses
 // Subclass for Layer 1 LEDs
 class Layer1Leds : public Leds
 {
@@ -150,6 +149,37 @@ public:
     Layer4Leds() {}
 };
 
+#pragma endregion ledSubclasses
+
+class BluetoothManager
+{
+public:
+    // variables within BluetoothManager - public as there aren't any
+    // children inheriting to declare as public to allow access externally
+    BluetoothManager()
+    {
+        bluetoothConnection = false;
+    }
+
+    // to check the state of the BT connection and manipulate the flags and initiate led changes
+    void checkBluetoothConnection()
+    {
+        // code in here
+    }
+
+    // playback setup and audio level monitoring
+    void audioStreamingSetup()
+    {
+        // code in here
+    }
+
+    // function to call led changes based on the audio levels
+    void volumeCallback()
+    {
+        // code in here
+    }
+};
+
 // Main function
 void setup()
 {
@@ -163,9 +193,8 @@ void setup()
     Layer4Leds layer4;
 
     // Example usage
-    layer1.volumeLed();   // Set layer1 to blue, layer4 to red
-    delay(2000);          // Wait for 2 seconds
-    layer1.connectTest(); // Perform connection test sequence on layer1 LEDs
+    // layer1.testFunction1();   // Set layer1 to blue, layer4 to red
+    // layer1.testFunction2(); // Perform connection test sequence on layer1 LEDs
 }
 
 void loop()

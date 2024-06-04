@@ -66,7 +66,7 @@ bool bluetoothConnection = false;
 #pragma region functionDeclarations
 
 void setLayerColor(ledLayer layer, int red, int green, int blue);
-void setLedsOff(std::string layerList[]);
+void setLedsOff(ledLayer *layerList);
 void pinOutputSetup();
 void audioSetup();
 void volumeCallback(int volume);
@@ -180,7 +180,7 @@ void setLayerColor(ledLayer layer, int red, int green, int blue)
     analogWrite(layer.bluePin, blue);
 }
 
-void setLedsOff(ledLayer layerList[])
+void setLedsOff(ledLayer *layerList)
 {
     for (int i = 0; i < (sizeof(layerList) / sizeof(layerList[0])); i++)
     {

@@ -1,0 +1,15 @@
+[INIT]
+PICFIX=1
+VARCount=64
+Version=0
+ProVersion=647
+SCREENDSIZE=240X320
+SPADDRESS=5000
+[IMG]
+00=00_main menu.bmp
+01=01_music player.jpg
+02=02_settings.jpg
+03=03_charging low.jpg
+04=04_charging medium.jpg
+05=05_charging high.jpg
+06=06_connected_devices.jpg
